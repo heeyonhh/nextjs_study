@@ -1,6 +1,6 @@
-믹## Next js
+## Next JS
 
-- $ npx create-next-app@latest .
+- 셋팅 $ npx create-next-app@latest .
 
 npm run dev
 
