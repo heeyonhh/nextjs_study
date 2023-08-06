@@ -28,3 +28,43 @@
 - globals.css
 
   전역적 css 파일
+
+- backend $ npx json-server --port 9999 --watch db.json
+
+  http://localhost:9999/posts 접근
+
+  http://localhost:9999/topics 에 글 목록 보여주기
+
+  db.json > topics json 데이터 생성
+
+- console 에서 topics 데이터 자바스트립트로 가져오기
+
+  네트워크 > esc 콘솔
+
+        fetch('http://localhost:9999/topics')
+      .then((resp)=>{
+        return resp.json();
+      })
+      .then(result=>{
+        console.log('result', result);
+      });
+
+- CSP 에러
+
+  // next.config.js
+
+      module.exports = {
+        async headers() {
+          return [
+            {
+              source: '/(.*)',
+              headers: [
+                {
+                  key: 'Content-Security-Policy',
+                  value: "default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'",
+                },
+              ],
+            },
+          ];
+        },
+      };
